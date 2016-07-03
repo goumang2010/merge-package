@@ -1,0 +1,17 @@
+{
+    "name": "merge-package_mod1",
+    "version": "1.0.0",
+    "description": "merge-package_mod1",
+    "dependencies": {
+        "mod1": "^9.9.9",
+        "mod2": "^8.9.9",
+        "mod3": "^7.9.9"
+    },
+    "devDependencies": {
+        "mod1_dev1": "^1.0.0",
+         "mod1_dev2": "^1.0.0",
+          "mod1_dev3": "^1.0.0",
+           "mod1_dev4": "^1.0.0",
+            "mod1_dev5": "^1.0.0"
+    }
+}
