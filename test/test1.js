@@ -1,6 +1,6 @@
 import test from 'ava';
 import path from 'path';
-import execmd from '../execmd.js'
+import execmd from '../bin/execmd.js'
 
 test('rev_merge_test', async (x) => {
 	let argu={
