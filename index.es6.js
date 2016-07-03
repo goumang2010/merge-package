@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 var argv = require('yargs').argv;
 
-//console.log(argv);
+
 function completePath(spath){
 	spath=spath||"";
 	let state=fs.lstatSync(spath);
@@ -12,6 +12,8 @@ function completePath(spath){
 	}
 	return spath;
 }
+
+
 let targetfile=completePath(argv.t);
 
 let pkgobj;
@@ -36,10 +38,18 @@ function getDepObj(depobj,data){
    Object.keys(data).forEach(d=>{
 		  	let revstr=data[d];
 		  	if(depobj[d]){
-		  		let oldrev=Number(depobj[d].substr(1));
-		  		let rev=Number(revstr.substr(1));
-		  		if(oldrev>rev){
-		  			revstr=depobj[d];
+		  		//compare rev,reserve the latest one
+		  		let rev0=depobj[d].substr(1).split('.');
+		  		let rev=revstr.substr(1).split('.');
+		  		for(let i=0;i<3;i++){
+		  			let n0=Number(rev0[i]);
+		  			let n1=Number(rev[i]);
+		  			if(n0!==n1){
+		  				if(n0>n1){
+		  					revstr=depobj[d];
+		  				}
+		  				break;
+		  			}
 		  		}
 		  	}
 		  	depobj[d]=revstr;
