@@ -4,7 +4,15 @@ import path from 'path';
 var argv = require('yargs').argv;
 
 //console.log(argv);
-let targetfile=argv.t||'package.json';
+function completePath(spath){
+	spath=spath||"";
+	let state=fs.lstatSync(spath);
+	if(state.isDirectory()){
+		spath=path.resolve(spath,'package.json')
+	}
+	return spath;
+}
+let targetfile=completePath(argv.t);
 
 let pkgobj;
 try{
@@ -44,9 +52,7 @@ function getDepObj(depobj,data){
 argv._.forEach(x=>
 	{
 		let spath=x;
-		if(!path.isAbsolute(x)){
-			spath=path.resolve(x);
-		}
+			spath=completePath(spath);
 		try{
 			let data=fs.readFileSync(spath, 'utf8');
 			console.log(`Reading from source file : ${spath}`);
