@@ -12,7 +12,7 @@ npm install merge-package -g
 merge-package D:\p\demo1\package.json demo2\package.json -t myProject\package.json
 
 #Or simply
-merge-package D:\p\demo1\ demo2 -t myProject
+merge-pkg D:\p\demo1\ demo2 -t myProject
 
 # Either absolute path or relative path is available.
 ```
