@@ -1,6 +1,6 @@
 {
   "name": "merge-package",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple tool to merge package.json files",
   "main": "index.js",
   "bin": {
